@@ -20,27 +20,6 @@ int my_random(int b1, int b2)
 }
 
 /*
-Copie une chaîne de caractère à la fin d'une autre chaîne de caractère
-
-\param src chaîne de caractère source à copier sur dst
-\param dst chaîne de caractère destination à laquelle on ajoutera src
-
-\note dst est supposé suffisamment grand pour contenir dst + src
-*/
-void str_append(const char *src, char *dst)
-{
-    int i, j;
-
-    for (i = 0; dst[i] != '\0'; i++){;}
-    
-    for (j = 0; src[j] != '\0'; j++)
-    {
-        dst[i + j] = src[j];
-    }
-    dst[i + j] = '\0';
-}
-
-/*
 Ajoute une locution aléatoire issue d'un fichier texte à la fin d'une chaîne de caractères
 
 \param file_name chemin du fichier contenant les locutions
@@ -70,7 +49,7 @@ void append_random_locution(const char *file_name, char *sentence)
     
     fclose(file);
     
-    str_append(locution, sentence);
+    strcat(sentence, locution);
 }
 
 /*
