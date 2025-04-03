@@ -6,11 +6,5 @@ Une solution innovante exploitant des algorithmes avancés d'intelligence textue
 
 # Exécution du programme
 
-Linux : 
-
-- ./bullgen.sh <option : nombre de phrases (= 1 par défaut)>
-
-Windows : 
-
-- gcc main.c -o <nom de l'exécutable>
-- ./<nom de l'exécutable>
+- gcc main.c -o bullshit_generator -lm
+- ./bullshit_generator <opt : nb_phrases>
