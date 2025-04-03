@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <time.h>
-#include <string.h>
 
 #define MAX_LOCUTION_LEN 100
 
@@ -20,19 +18,17 @@ int my_random(int b1, int b2)
 }
 
 /*
-Ajoute une locution aléatoire issue d'un fichier texte à la fin d'une chaîne de caractères
+Affiche une locution aléatoire issue d'un fichier texte
 
 \param file_name chemin du fichier contenant les locutions
-\param sentence chaîne de caractères à compléter avec la locution
 */
-void append_random_locution(const char *file_name, char *sentence)
+void print_random_locution(const char *file_name)
 {
-    FILE *file = NULL;
     int nb_locution, i_chosen_locution;
     char locution[MAX_LOCUTION_LEN];
-
-    file = fopen(file_name, "r");
-    if (NULL == file)
+    
+    FILE *file = fopen(file_name, "r");
+    if (!file)
     {
         printf("Error : unable to open file '%s'\n", file_name);
         exit(EXIT_FAILURE);
@@ -48,23 +44,8 @@ void append_random_locution(const char *file_name, char *sentence)
     }while (i_chosen_locution >= 0);
     
     fclose(file);
-    
-    strcat(sentence, locution);
-}
 
-/*
-Affiche une phrase de bullshit aléatoire
-*/
-void print_bullshit_sentence(void)
-{
-    char bullshit_sentence[4*MAX_LOCUTION_LEN] = "\0";
-
-    append_random_locution("locutions/subjects", bullshit_sentence);
-    append_random_locution("locutions/verbs", bullshit_sentence);
-    append_random_locution("locutions/objects", bullshit_sentence);
-    append_random_locution("locutions/conclusions", bullshit_sentence);
-
-    printf("%s\n", bullshit_sentence);
+    printf("%s", locution);
 }
 
 int main(int argc, char *argv[])
@@ -75,7 +56,11 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < nb_sentence; i++)
     {
-        print_bullshit_sentence();
+        print_random_locution("locutions/subjects");
+        print_random_locution("locutions/verbs");
+        print_random_locution("locutions/objects");
+        print_random_locution("locutions/conclusions");
+        printf("\n");
     }
 
     return EXIT_SUCCESS;

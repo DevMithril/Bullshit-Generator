@@ -6,5 +6,5 @@ Une solution innovante exploitant des algorithmes avancés d'intelligence textue
 
 # Exécution du programme
 
-- gcc main.c -o bullshit_generator -lm
+- gcc main.c -o bullshit_generator
 - ./bullshit_generator <opt : nb_phrases>
